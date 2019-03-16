@@ -51,3 +51,10 @@
     #custom-search-form button {
         left: 0px;
     }
+    
+/* Formulaire Vin */
+@media (min-width: 768px) {
+    .col-md-4 {
+        max-width: none;
+    }
+}
