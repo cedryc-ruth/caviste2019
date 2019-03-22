@@ -90,19 +90,24 @@ $wines = [
 //Retrouve tous les vins de la base de données
 //GET	/api/wines
 if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines') {
-    var_dump(json_encode($wines));
-} elseif($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines/search/Chateau') {
+    echo json_encode($wines);
+} elseif($_SERVER['REQUEST_METHOD']=='GET' 
+        && strpos($_SERVER['REQUEST_URI'],'/mock.php/api/wines/search/')==0) {
     //Recherche les vins dont le nom contient ‘Chateau’
     //GET	/api/wines/search/Chateau
-    var_dump(json_encode([
-        $wines[2],
-        $wines[3],
-        $wines[6],
-    ]));
+    if(preg_match('#/chateau$#',$_SERVER['REQUEST_URI'])===1) {
+        echo json_encode([
+            $wines[2],
+            $wines[3],
+            $wines[6],
+        ]);
+    } else {
+        echo json_encode([]);
+    }
 } elseif($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines/8') {
     //Retrouve le vin dont l'id == 8
     //GET	/api/wines/8
-    var_dump(json_encode([$wines[7]]));
+    echo json_encode([$wines[7]]);
 } elseif($_SERVER['REQUEST_METHOD']=='POST' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines') {
     //Ajoute un vin dans la base de données
     //POST	/api/wines
@@ -119,7 +124,7 @@ if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/
 
     $wines[] = $wine;
 
-    var_dump(true);
+    echo true;
 } elseif($_SERVER['REQUEST_METHOD']=='PUT' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines/8') {
     //Modifie les données du vin dont l'id == 8
     //PUT	/api/wines/8
@@ -141,7 +146,7 @@ if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/
         }
     }
 
-    var_dump(true);
+    echo true;
 } elseif($_SERVER['REQUEST_METHOD']=='DELETE' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines/8') {
     //Supprime le vin dont l'id == 8
     //DELETE	/api/wines/8
@@ -153,6 +158,6 @@ if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/
 
     unset($wines[$i]);
 
-    var_dump(true);
+    echo true;
 }
 
