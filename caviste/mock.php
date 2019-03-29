@@ -1,5 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE');
 
 //Mocking du datasource
 $wines = [
@@ -11,7 +12,7 @@ $wines = [
         'region' => 'Languedoc',
         'year' => 2013,
         'notes' => 'sdsdsd',
-        'pictures' => 'pics/vin-1.jpg'
+        'pictures' => 'pics/vin_1.jpg'
     ],
     [
         'id' => 2,
@@ -21,7 +22,7 @@ $wines = [
         'region' => 'Pays d\'Oc',
         'year' => 2018,
         'notes' => 'azazazaza',
-        'picture' => 'pics/vin-2.jpg'
+        'picture' => 'pics/vin_2.jpg'
     ],
     [
         'id' => 3,
@@ -31,7 +32,7 @@ $wines = [
         'region' => 'Bordeaux',
         'year' => 2012,
         'notes' => 'erererere',
-        'picture' => 'pics/vin-3.jpg'
+        'picture' => 'pics/vin_3.jpg'
     ],
     [
         'id' => 4,
@@ -41,7 +42,7 @@ $wines = [
         'region' => 'Bordeaux',
         'year' => 2015,
         'notes' => 'dfdfdfd',
-        'picture' => 'pics/vin-4.jpg'
+        'picture' => 'pics/vin_4.jpg'
     ],
     [
         'id' => 5,
@@ -51,7 +52,7 @@ $wines = [
         'region' => ' Aragón',
         'year' => 2018,
         'notes' => 'eseses',
-        'picture' => 'pics/vin-5.jpg'
+        'picture' => 'pics/vin_5.jpg'
     ],
     [
         'id' => 6,
@@ -61,7 +62,7 @@ $wines = [
         'region' => 'Central Valley',
         'year' => 2018,
         'notes' => 'chchchc',
-        'picture' => 'pics/vin-6.jpg'
+        'picture' => 'pics/vin_6.jpg'
     ],
     [
         'id' => 7,
@@ -71,7 +72,7 @@ $wines = [
         'region' => 'Bordeaux',
         'year' => 2016,
         'notes' => 'sdsdsd',
-        'picture' => 'pics/vin-7.jpg'
+        'picture' => 'pics/vin_7.jpg'
     ],
     [
         'id' => 8,
@@ -81,7 +82,7 @@ $wines = [
         'region' => 'Provence',
         'year' => 2016,
         'notes' => 'pfpfpfpf',
-        'picture' => 'pics/vin-8.jpg'
+        'picture' => 'pics/vin_8.jpg'
     ],
 ];
 
@@ -92,7 +93,7 @@ $wines = [
 if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines') {
     echo json_encode($wines);
 } elseif($_SERVER['REQUEST_METHOD']=='GET' 
-        && strpos($_SERVER['REQUEST_URI'],'/mock.php/api/wines/search/')==0) {
+        && strpos($_SERVER['REQUEST_URI'],'/mock.php/api/wines/search/')===0) {
     //Recherche les vins dont le nom contient ‘Chateau’
     //GET	/api/wines/search/Chateau
     if(preg_match('#/chateau$#',$_SERVER['REQUEST_URI'])===1) {
@@ -136,7 +137,7 @@ if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/
         'region' => 'Provence',
         'year' => 2019,
         'notes' => 'Test ',
-        'picture' => 'pics/vin-8.jpg'
+        'picture' => 'pics/vin_8.jpg'
     ];
 
     foreach($wines as &$w) {

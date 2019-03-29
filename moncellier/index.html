@@ -46,7 +46,7 @@
                             <div class="form-group">
                               <label class="col-md-4 control-label" for="idWine">Id:</label>  
                               <div class="col-md-4">
-                                <input id="idWine" name="idWine" type="number" pattern="[0-9]*" placeholder="" class="form-control input-md">
+                                  <input id="idWine" name="idWine" type="number" pattern="[0-9]*" placeholder="" class="form-control input-md" readonly>
                                 <span class="help-block"></span>  
                               </div>
                             </div>
@@ -99,14 +99,14 @@
                             <!-- Button (Double) -->
                             <div class="form-group">
                               <div class="col-md-8">
-                                <button id="btSave" name="btSave" class="btn btn-primary">Save</button>
-                                <button id="btDelete" name="btDelete" class="btn btn-danger">Delete</button>
+                                <button id="btSave" name="btSave" type="button" class="btn btn-primary">Save</button>
+                                <button id="btDelete" name="btDelete" type="button" class="btn btn-danger">Delete</button>
                               </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card mx-auto" style="width: 18rem;">
-                                <img class="card-img-top" src="http://caviste.localhost/pics/generic.jpg" alt="Generic Wine Bottle">
+                                <img class="card-img-top" id="picture" src="http://caviste.localhost/pics/generic.jpg" alt="Generic Wine Bottle">
                                 <div class="card-body text-right">
                                   <a href="#" class="btn btn-light">
                                       <i class="fas fa-pencil-alt"></i>
