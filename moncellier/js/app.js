@@ -110,7 +110,6 @@ window.onload = function() {
     };
     
     btSave.onclick = function() {
-        console.log('SAVE');
         //Récupérer les données du formulaire
         let idInput = document.getElementById('idWine');
         let nameInput = document.getElementById('name');
@@ -120,7 +119,7 @@ window.onload = function() {
         let yearInput = document.getElementById('year');
         let pictureImg = document.getElementById('picture');
         let notesInput = document.getElementById('notes');
-        
+
         let wine = {
             id: idInput.value,
             name: nameInput.value,
@@ -132,22 +131,44 @@ window.onload = function() {
             notes: notesInput.value,
         };
         
-        console.log(wine);
-        //Envoyer les données au serveur en méthode PUT
-        let options = {
-            method: 'PUT',
-            body: wine,
-        };
-        
-        fetch(apiURL + '/api/wines/'+ wine.id, options)
-        .then(function(response) {
-            response.json().then(function(data) {
-                console.log(data);
+        if(wine.id != '') {
+            console.log('UPDATE');
+
+            console.log(wine);
+            //Envoyer les données au serveur en méthode PUT
+            let options = {
+                method: 'PUT',
+                body: wine,
+            };
+
+            fetch(apiURL + '/api/wines/'+ wine.id, options)
+            .then(function(response) {
+                response.json().then(function(data) {
+                    console.log(data);
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
             });
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+        } else {
+            console.log('SAVE');
+            
+            //Envoyer les données au serveur en méthode POST
+            let options = {
+                method: 'POST',
+                body: wine,
+            };
+            
+            fetch(apiURL + '/api/wines', options)
+            .then(function(response) {
+                response.json().then(function(data) {
+                    console.log(data);
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        }
     };
     
     btDelete.onclick = function() {
@@ -175,6 +196,23 @@ window.onload = function() {
         .catch(function(error) {
             console.log(error);
         });
+    };
+    
+    btAdd.onclick = function() {
+        //Vider le formulaire
+        let frmWine = document.getElementById('frmWine');
+        frmWine.reset();
+        
+        let pictureImg = document.getElementById('picture');
+        pictureImg.src = SERVER_URL + '/pics/generic.jpg';
+        
+        //Donner le focus au champ "nom"
+        let nameInput = document.getElementById('name');
+        nameInput.focus();
+    };
+    
+    btImgChange.onclick = function() {
+        
     };
     
 }

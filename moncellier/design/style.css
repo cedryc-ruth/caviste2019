@@ -58,3 +58,20 @@
         max-width: none;
     }
 }
+
+#btAdd {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+#btAdd:hover {
+    color: darkred;
+}
+
+#btAdd > i::after {
+    content: "+";
+    font-size: 0.7em;
+    font-weight: bolder;
+    position: relative;
+    top: -20px;
+}
