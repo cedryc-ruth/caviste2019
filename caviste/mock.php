@@ -160,5 +160,20 @@ if($_SERVER['REQUEST_METHOD']=='GET' && $_SERVER['REQUEST_URI']=='/mock.php/api/
     unset($wines[$i]);
 
     echo true;
+} elseif($_SERVER['REQUEST_METHOD']=='POST' && $_SERVER['REQUEST_URI']=='/mock.php/api/wines/picture') {
+    //Ajoute un image de vin dans le dossier pics du serveur
+    //POST	/api/wines/picture    
+    if(isset($_FILES['pictureFile']) && empty($_FILES['pictureFile']['error'])) {
+        $source = $_FILES['pictureFile']['tmp_name'];
+        $destination = 'pics/'.$_FILES['pictureFile']['name'];
+
+        if(move_uploaded_file($source, $destination)) {
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    } else {
+        echo json_encode(false);
+    }
 }
 

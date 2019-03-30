@@ -212,7 +212,33 @@ window.onload = function() {
     };
     
     btImgChange.onclick = function() {
-        
+        //Afficher la boîte de dialogue de sélection de fichier
+        let pictureFile = document.getElementById('pictureFile');
+        pictureFile.click();
     };
+    
+    let pictureFile = document.getElementById('pictureFile');
+    pictureFile.onchange = function() {
+        const formData = new FormData();
+        formData.append('pictureFile', pictureFile.files[0]);
+        
+        const options = {
+            method: 'POST',
+            body: formData
+        };
+        
+        //Envoyer l'image sur le serveur
+        fetch(apiURL + '/api/wines/picture', options)
+        .then(function(response) {
+            console.log(response);
+            
+            //Afficher l'image sélectionnée
+            let pictureImg = document.getElementById('picture');
+            pictureImg.src = SERVER_URL + 'pics/' + pictureFile.files[0].name;
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
     
 }
