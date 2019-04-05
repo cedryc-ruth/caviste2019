@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f5d3d05d70b58db9144bb1ca70c8698",
-    "content-hash": "3b0766dbcef4dfb1a4a2012fef8611d8",
+    "hash": "b1539719057b3e6a005ef8377b190936",
+    "content-hash": "46fde452105bdd7140fe274d783212d6",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -37,6 +37,47 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14 19:40:03"
+        },
+        {
+            "name": "gabordemooij/redbean",
+            "version": "v5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gabordemooij/redbean.git",
+                "reference": "4ec3ee400bfbe4c52da4a376de9a6c338b5a8819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/4ec3ee400bfbe4c52da4a376de9a6c338b5a8819",
+                "reference": "4ec3ee400bfbe4c52da4a376de9a6c338b5a8819",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RedBeanPHP\\": "RedBeanPHP"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Gabor de Mooij",
+                    "email": "gabor@redbeanphp.com",
+                    "homepage": "https://redbeanphp.com"
+                }
+            ],
+            "description": "RedBeanPHP ORM",
+            "homepage": "https://redbeanphp.com/",
+            "keywords": [
+                "orm"
+            ],
+            "time": "2018-10-26 09:06:03"
         },
         {
             "name": "nikic/fast-route",
